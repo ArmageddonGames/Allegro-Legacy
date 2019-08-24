@@ -425,14 +425,18 @@ set(PLATFORM_LIBS)              # always link with these libraries
 set(PLATFORM_LIBS_NON_MODULES)  # only link with these if modules disabled
 set(PLATFORM_LIBS_MODULES)      # only link with these if modules enabled
 
-# -- Unix --
-
-option(WANT_OSS "Build OSS support" on)
-option(WANT_ALSA "Build ALSA support" on)
-option(WANT_JACK "Build JACK support" on)
-option(WANT_SGIAUDIO "Build SGI audio support" on)
-
 list(APPEND PLATFORM_SOURCES ${ALLEGRO_LEGACY_SRC_A5_FILES})
+
+list(APPEND PLATFORM_SOURCES ${ALLEGRO_LEGACY_SRC_MIDIA5_FILES})
+if(ALLEGRO_LEGACY_MACOSX)
+    list(APPEND PLATFORM_SOURCES ${ALLEGRO_LEGACY_SRC_MIDIA5_MACOS_FILES})
+endif(ALLEGRO_LEGACY_MACOSX)
+if(ALLEGRO_LEGACY_UNIX)
+    list(APPEND PLATFORM_SOURCES ${ALLEGRO_LEGACY_SRC_MIDIA5_UNIX_FILES})
+endif(ALLEGRO_LEGACY_UNIX)
+if(ALLEGRO_LEGACY_WINDOWS)
+    list(APPEND PLATFORM_SOURCES ${ALLEGRO_LEGACY_SRC_MIDIA5_WINDOWS_FILES})
+endif(ALLEGRO_LEGACY_WINDOWS)
 
 #-----------------------------------------------------------------------------#
 #
